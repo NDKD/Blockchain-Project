@@ -1,0 +1,97 @@
+Instructions to run this Blockchain project
+
+open a new gitbash
+change the directory to geth-alltools-windows-amd64-1.9.7-a718daa6
+
+
+
+From "Geth" Folder # create your first node and copy the key.
+Code:
+./geth account new --datadir node1
+
+# Create a second node.
+./geth account new --datadir node2
+
+
+# Create a genesis block using puppeth.exe
+
+# Please specify a network name to administer -- network name = vijaysatishnet
+
+
+# Select   option 2 to use`Clique (Proof of Authority)` consensus algorithm
+
+# Specify your chain or network id -- chain id = 1207
+
+ Paste both account addresses from the first step one at a time into the list of accounts to seal.
+
+    * Paste them again in the list of accounts to pre-fund. There are no block rewards in PoA, so you'll need to pre-fund.
+
+    * Continue with the default option for the prompt that asks, Should the precompile-addresses (0x1 .. 0xff) be pre-funded with 1 wei?
+
+    * Complete the rest of the prompts, and when you are back at the main menu, choose the "Manage existing genesis" option.
+
+    * Export genesis configurations. This will fail to create two of the files, but you only need `networkname.json`.
+
+Ctrl C to return back to the base location
+
+
+# Initialise node1 
+
+Code
+./geth --datadir node1 init sskn.json
+
+# Initialise node2
+Code
+./geth --datadir node2 init sskn.json
+
+
+
+# Start node 1
+Code
+./geth --datadir node1 --mine --miner.threads 1
+
+# Mining node connection url:
+2. Copy the enode address in the node 1 terminal
+
+
+
+# Open another gitbash window and start node 2, specifying your enode
+./geth --datadir node2 --port 30304 --rpc --bootnodes "enode://f9baf4deb50972da983a9b58c581fd9e95c1b23275c7d1236be01e6f1ab9d0da0a4a931fb68912a96ea4fa9e7f180fe0c980ea5ad35e30ef099cc9b96d90e24b@127.0.0.1:30303" --ipcdisable
+
+Open cryto wallet using your public key
+
+# Custom your network same as administer -- vijaysatishnet
+Custom your Node Name same as your adminster 
+Select Custom field from the dropdown button for Network
+Use Network name same as adminster = "vijaysatishnet"
+Select ETH as Currency 
+Use the same chain ID number as opted earlier = "1207"
+use the local network as http://127.0.0.1:8545
+save the custom network
+
+# Change Network to your custom network --- "vijaysatishnet"
+
+Enter key store to log back into the account with ETH Balance
+enter your netwrok password to access the account
+
+#Select Send Ehter & Tokens option from the top left
+
+#Select the address to send to  and from
+Basically use your own address and complete the transaction and send
+
+
+It will show the pending transaction.
+Go back to your Node1   git bash
+you can see the new transactions completed and node 1 will show the new block minted
+
+In the gitbash with node 2 running, you can see the new transaction submitted
+
+you can view the status of the trnasction in crypto wallet
+It will show the status of the transaction, transaction hash number, block number , amount , gas price for the transaction and other details
+
+
+
+
+
+
+http://127.0.0.1:8545
